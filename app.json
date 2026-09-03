@@ -6,10 +6,19 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_LOAD"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ananin.recordar"
     },
     "android": {
+      "package": "com.ananin.recordar",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -19,7 +28,21 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png",
+      "name": "Recordar",
+      "shortName": "Recordar",
+      "lang": "es",
+      "themeColor": "#0F9D58",
+      "backgroundColor": "#F4F6F9",
+      "display": "standalone",
+      "description": "Antes de salir, revisa que no te olvidas nada."
+    },
+    "plugins": [
+      "expo-sqlite",
+      "expo-font",
+      "expo-updates"
+    ]
   }
 }
