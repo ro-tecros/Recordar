@@ -7,15 +7,20 @@
  *    actualiza en segundo plano.
  *
  * Para forzar que todos los clientes tomen una versión nueva, sube el número
- * de CACHE (por ejemplo 'recordar-v2').
+ * de CACHE (por ejemplo 'recordar-v3').
  */
 
-const CACHE = 'recordar-v1';
+const CACHE = 'recordar-v2';
+
+// La app puede servirse en la raíz o en un subdirectorio (GitHub Pages la
+// publica en /Recordar/). './' se resuelve contra la ubicación de este archivo,
+// así que apunta siempre al índice correcto.
+const SHELL = './';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.add('/'))
+    caches.open(CACHE).then((cache) => cache.add(SHELL))
   );
 });
 
@@ -46,11 +51,11 @@ self.addEventListener('fetch', (event) => {
       fetch(request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put('/', copy));
+          caches.open(CACHE).then((cache) => cache.put(SHELL, copy));
           return response;
         })
         .catch(() =>
-          caches.match('/').then((cached) => cached || caches.match(request))
+          caches.match(SHELL).then((cached) => cached || caches.match(request))
         )
     );
     return;

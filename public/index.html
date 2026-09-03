@@ -9,11 +9,11 @@
     <title>Recordar</title>
     <meta name="description" content="Antes de salir, revisa que no te olvidas nada." />
 
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#0F9D58" />
 
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -44,7 +44,9 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/sw.js').catch(function (err) {
+          // Relativo a la página: funciona igual en la raíz o en un subdirectorio
+          // (p. ej. GitHub Pages sirve la app en /Recordar/).
+          navigator.serviceWorker.register('sw.js').catch(function (err) {
             console.log('SW no registrado:', err);
           });
         });
