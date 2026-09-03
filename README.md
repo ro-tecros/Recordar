@@ -4,6 +4,10 @@ App móvil (iOS + Android) para no olvidar nada al salir. Guardas lo que llevas
 siempre y tus salidas con su propia lista; al tocar el botón grande **SALIR**
 ves todo junto para revisarlo antes de irte.
 
+**App en vivo (PWA):** https://ro-tecros.github.io/Recordar/ — se instala desde
+el navegador en Android e iPhone. Cada `git push` a `master` la vuelve a
+publicar automáticamente (workflow `.github/workflows/deploy.yml`).
+
 - 100 % local: los datos se guardan solo en el dispositivo (SQLite en móvil,
   `localStorage` en web). No hay servidor ni cuenta.
 - Gratis y de código abierto (licencia MIT).
